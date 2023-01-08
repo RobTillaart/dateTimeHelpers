@@ -153,8 +153,11 @@ char * seconds2clockAMPM(uint32_t seconds, bool displaySeconds = false)
   uint8_t hours, minutes, sec;
   secondsSplit(seconds, &days, &hours, &minutes, &sec);
 
-  if (hours >  12) hours -= 12;
-  if (hours >= 12) PM = true;
+  if (hours >= 12)
+  {
+    PM = true;
+    if (hours > 12) hours -= 12;
+  }
   uint8_t t = hours / 10;
   buf[pos++] = t + '0';
   buf[pos++] = hours - (t * 10) + '0';
