@@ -48,11 +48,14 @@ unittest(test_constants)
 
 //  TODO DISPLAY
 /*
-secondsSplit	KEYWORD2
+secondsSplit
 
+seconds2duration
 seconds2clock24
 seconds2clock12
 seconds2clockAMPM
+
+millis2duration
 millis2clock
 */
 
@@ -65,33 +68,33 @@ millis2clock
 //
 unittest(test_weeks)
 {
-  assertEqualFloat(1.653439153439e-6, weeks(1), 0.001);
-  assertEqualFloat(0.5, weeks(302400), 0.001);
-  assertEqualFloat(1.0, weeks(604800), 0.001);
+  assertEqualFloat(1.653439153439e-6, seconds2weeks(1), 0.001);
+  assertEqualFloat(0.5, seconds2weeks(302400), 0.001);
+  assertEqualFloat(1.0, seconds2weeks(604800), 0.001);
 }
 
 
 unittest(test_days)
 {
-  assertEqualFloat(1.157407407407e-5, days(1), 0.001);
-  assertEqualFloat(0.5, days(43200), 0.001);
-  assertEqualFloat(1.0, days(86400), 0.001);
+  assertEqualFloat(1.157407407407e-5, seconds2days(1), 0.001);
+  assertEqualFloat(0.5, seconds2days(43200), 0.001);
+  assertEqualFloat(1.0, seconds2days(86400), 0.001);
 }
 
 
 unittest(test_hours)
 {
-  assertEqualFloat(2.777777777778e-4, hours(1), 0.001);
-  assertEqualFloat(0.5, hours(1800), 0.001);
-  assertEqualFloat(1.0, hours(3600), 0.001);
+  assertEqualFloat(2.777777777778e-4, seconds2hours(1), 0.001);
+  assertEqualFloat(0.5, seconds2hours(1800), 0.001);
+  assertEqualFloat(1.0, seconds2hours(3600), 0.001);
 }
 
 
 unittest(test_minutes)
 {
-  assertEqualFloat(1.666666666667e-2, minutes(1), 0.001);
-  assertEqualFloat(0.5, minutes(30), 0.001);
-  assertEqualFloat(1.0, minutes(60), 0.001);
+  assertEqualFloat(1.666666666667e-2, seconds2minutes(1), 0.001);
+  assertEqualFloat(0.5, seconds2minutes(30), 0.001);
+  assertEqualFloat(1.0, seconds2minutes(60), 0.001);
 }
 
 
