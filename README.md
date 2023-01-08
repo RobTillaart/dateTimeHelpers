@@ -60,7 +60,7 @@ Note this function has no morning or afternoon indication.
 **seconds2clockAMPM** has two more or less undefined moments: midnight (00:00 AM 12:00 PM) and noon (12:00 AM 12:00 PM).
 See https://www.npl.co.uk/resources/q-a/is-midnight-12am-or-12pm)
 
-At night one uses 00:15 AM and just after noon one uses 12:15 PM.
+At night one uses 00:15 AM and after noon one uses 12:15 PM.
 Therefore I use in this implementation:
 - midnight == 00:00 AM 
 - noon == 12:00 PM
