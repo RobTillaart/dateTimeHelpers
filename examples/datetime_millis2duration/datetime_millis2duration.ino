@@ -1,7 +1,7 @@
 //
-//    FILE: datetime_millis2clock.ino
+//    FILE: datetime_millis2duration.ino
 //  AUTHOR: Rob Tillaart
-// PURPOSE: demo datetime_millis2clock
+// PURPOSE: demo millis2duration
 //     URL: https://github.com/RobTillaart/dateTimeHelpers
 
 
@@ -19,7 +19,7 @@ void loop()
 {
   uint32_t mil = micros();  //  simulation fast clock
 
-  Serial.println(millis2clock(mil));
+  Serial.println(millis2duration(mil));
   delay(1234);
 }
 

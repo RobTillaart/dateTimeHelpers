@@ -40,24 +40,28 @@ Please report missing functions, open an issue or preferably a PR.
 #include "dateTimeHelpers.h"
 ```
 
-#### Functions
+#### Display functions
 
 - **void secondsSplit(uint32_t seconds, uint16_t \* days, uint8_t \* hours, uint8_t \* minutes, uint8_t \* sec)** Splits the seconds into days, hours, minutes and seconds. 
-This is the math worker for the next three.
-- **char \* seconds2clock24(uint32_t seconds, bool displaySeconds = false)** returns "days 00:00:00 .. 23:59:59" or "days 00:00 ..    23:59"
-- **char \* seconds2clock12(uint32_t seconds, bool displaySeconds = false)** returns "days 00:00:00 .. 12:59:59" or "days 00:00 ..    12:59". 
+This is the worker for the next three. 
+Note: days is max 65535 == 179 years.
+- **char \* seconds2duration(uint32_t seconds, bool displaySeconds = false)** returns "days 00:00:00 .. 23:59:59" or "days 00:00 .. 23:59"
+- **char \* seconds2clock24(uint32_t seconds, bool displaySeconds = false)** returns "00:00:00 .. 23:59:59" or "00:00 .. 23:59"
+- **char \* seconds2clock12(uint32_t seconds, bool displaySeconds = false)** returns "00:00:00 .. 12:59:59" or "00:00 .. 12:59". 
 Note this function has no morning or afternoon indication.
 - **char \* seconds2clockAMPM(uint32_t seconds, bool displaySeconds = false)**
-- **char \* millis2clock(uint32_t millis)**
+- **char \* millis2duration(uint32_t millis)** returns "days 00:00:00.000 .. 23:59:59.999"
+- **char \* millis2clock(uint32_t millis)** returns "00:00:00.000 .. 23:59:59.999"
 
 
 ### Convertors
 
-Note: the following do float math so there might occur rounding
-- **float weeks(uint32_t seconds)** convert a number of seconds to weeks.
-- **float days(uint32_t seconds)** convert a number of seconds to days.
-- **float hours(uint32_t seconds)** convert a number of seconds to hours.
-- **float minutes(uint32_t seconds)** convert a number of seconds to minutes.
+Note: the following functions use float math so there might occur rounding.
+
+- **float seconds2weeks(uint32_t seconds)** idem.
+- **float seconds2days(uint32_t seconds)** idem.
+- **float seconds2hours(uint32_t seconds)** idem.
+- **float seconds2minutes(uint32_t seconds)** idem.
 
 
 ## Future
@@ -72,7 +76,7 @@ Note: the following do float math so there might occur rounding
 - optimize secondssplit() (see fast math lib)
 - merge code where possible
 - extend examples
-- unit tests
+- add unit tests
 - create .cpp file, + move code
 
 
@@ -88,11 +92,12 @@ Note: the following do float math so there might occur rounding
 - micros2clock()
   - mm:ss:ttt:mmm or mm:ss.ttt.mmm ?
 - hour2angle(hh.mm.ss) = angle of the hour hand
-  - 12x60x60 = 360° in 1/12th parts
+  - 12x60x60 = 360Â° in 1/12th parts
   - idem radians..
 - minute2angle(mm.ss) = angle of the minute hand (mm x 6 + ss x 0.1
 - seconds2angle(ss) = angle of the seconds hand (ssx6)
-
+- "classify" ?
+  - extern "C" ?
 
 #### Won't
 
