@@ -12,8 +12,7 @@ Arduino library with date and time helper functions.
 
 ## Description
 
-This library contains functions that have the goal to help with 
-date and time processing.
+This library contains functions that have the goal to help with date and time processing.
 It is primary a placeholder.
 
 Please report missing functions, open an issue or preferably a PR.
@@ -29,7 +28,9 @@ Please report missing functions, open an issue or preferably a PR.
 
 #### Implementation notes
 
-- the function share an output buffer. This can give problems when prints are made fast after each other as the buffer is not printed completely before it is filled again. (think also RTOS)
+- the functions share an output buffer.
+This can give problems when prints are made fast after each other as the buffer
+ is not printed completely before it is filled again. (think also RTOS)
 - math is straightforward, may be optimized? sprintf()?
 - code has repeating parts, may be optimized?
 
@@ -49,9 +50,20 @@ Note: days is max 65535 == 179 years.
 - **char \* seconds2clock24(uint32_t seconds, bool displaySeconds = false)** returns "00:00:00 .. 23:59:59" or "00:00 .. 23:59"
 - **char \* seconds2clock12(uint32_t seconds, bool displaySeconds = false)** returns "00:00:00 .. 12:59:59" or "00:00 .. 12:59". 
 Note this function has no morning or afternoon indication.
-- **char \* seconds2clockAMPM(uint32_t seconds, bool displaySeconds = false)**
+- **char \* seconds2clockAMPM(uint32_t seconds, bool displaySeconds = false)** returns "00:00:00 AM .. 12:59:59 PM" or "00:00 AM .. 12:59 PM". 
 - **char \* millis2duration(uint32_t millis)** returns "days 00:00:00.000 .. 23:59:59.999"
 - **char \* millis2clock(uint32_t millis)** returns "00:00:00.000 .. 23:59:59.999"
+
+
+#### AM PM 
+
+**seconds2clockAMPM** has two more or less undefined moments: midnight (00:00 AM 12:00 PM) and noon (12:00 AM 12:00 PM).
+See https://www.npl.co.uk/resources/q-a/is-midnight-12am-or-12pm)
+
+At night one uses 00:15 AM and just after noon one uses 12:15 PM.
+Therefore I use in this implementation:
+- midnight == 00:00 AM 
+- noon == 12:00 PM
 
 
 ### Convertors
@@ -73,7 +85,8 @@ Note: the following functions use float math so there might occur rounding.
 
 #### Should 
 
-- optimize secondssplit() (see fast math lib)
+- optimize for performance
+  - secondssplit() (see fast math lib)
 - merge code where possible
 - extend examples
 - add unit tests
