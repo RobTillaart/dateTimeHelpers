@@ -2,7 +2,7 @@
 //
 //    FILE: datetimeHelpers.h
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.1
+// VERSION: 0.1.2
 // PURPOSE: Arduino library with date time helper functions.
 //    DATE: 2020-07-01
 //     URL: https://github.com/RobTillaart/dateTimeHelpers
